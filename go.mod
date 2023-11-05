@@ -7,6 +7,8 @@ require (
 	github.com/gocolly/colly v1.2.0
 )
 
+require github.com/davecgh/go-spew v1.1.1 // indirect
+
 require (
 	github.com/andybalholm/cascadia v1.3.1 // indirect
 	github.com/antchfx/htmlquery v1.3.0 // indirect
