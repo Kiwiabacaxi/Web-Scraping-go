@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"path/filepath"
+	"runtime"
 
 	"github.com/Kiwiabacaxi/Web-Scraping-go/cmd/dto"
 	"github.com/Kiwiabacaxi/Web-Scraping-go/pkg/usecases"
@@ -22,7 +24,12 @@ func saveQuotesToFile(quotes []dto.Quote) {
 		return
 	}
 
-	err = os.WriteFile("../../data/quotes.json", jsonQuotes, 0644)
+	_, currentFilePath, _, _ := runtime.Caller(0)
+	rootDir := filepath.Join(currentFilePath, "..", "..", "..")
+
+	filePath := filepath.Join(rootDir, "data", "quotes.json")
+
+	err = os.WriteFile(filePath, jsonQuotes, 0644)
 	if err != nil {
 		fmt.Println("Error writing file:", err)
 	}
